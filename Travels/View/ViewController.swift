@@ -40,7 +40,6 @@ extension ViewController: UITableViewDataSource {
         
         switch viewModel?.tipo {
         case .destaques:
-            
             guard let celulaViagem = tableView.dequeueReusableCell(withIdentifier: "ViagemTableViewCell") as? ViagemTableViewCell else {
                 fatalError("error to create ViagemTableViewCell")
             }
@@ -50,9 +49,11 @@ extension ViewController: UITableViewDataSource {
             
         case .ofertas:
             guard let celulaOferta = tableView.dequeueReusableCell(withIdentifier: "OfertaTableViewCell") as? OfertaTableViewCell else {
-                fatalError("error to create ViagemTableViewCell")
+                fatalError("error to create OfertaTableViewCell")
             }
+            celulaOferta.configuraCelula(viewModel?.viagens)
             return celulaOferta
+            
         default:
             return UITableViewCell()
         }
